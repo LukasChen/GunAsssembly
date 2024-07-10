@@ -12,6 +12,7 @@ namespace GunAssembly{
             if (GUILayout.Button("Assign Array")) {
                 WeaponController controller = (WeaponController)target;
                 WeaponPartAnim[] parts = FindObjectsOfType<WeaponPartAnim>();
+                
 
                 foreach (var part in parts) {
                     controller.AssignObj(part);
