@@ -38,7 +38,9 @@ namespace GunAssembly {
         [SerializeReference] public PartAnimState rootState;
         [SerializeField] private Transform _shellSpawn;
         [SerializeField] private GameObject _casing;
+        [SerializeField] private int _casePoolLength;
         [SerializeField] private VisualEffect[] _effects;
+        private Queue<GameObject> _casePool = new Queue<GameObject>();
 
         private WeaponState _assemblyState = WeaponState.None;
         
@@ -62,6 +64,7 @@ namespace GunAssembly {
             rootState.active = true;
 
             AssignParent(rootState);
+            PrepPool();
         }
 
         private void StateChange(WeaponState newState) {
@@ -72,12 +75,11 @@ namespace GunAssembly {
         }
 
         private bool ValidateWeaponState(WeaponState state) {
-            bool predicate = (int)state == 0;
-            Debug.Log(predicate);
-            bool result = rootState.subStates.All(n => n.active == predicate);
-            Debug.Log(result);
+            bool predicate = (int)state == 1;
+            PartAnimState remainingPart = DFS(rootState, n => n.active == predicate && n.name != "Root");
+            bool result = remainingPart == null;
 
-            return result;
+            return result || state == WeaponState.None;
         }
 
         public void AssignObj(WeaponPartAnim part) {
@@ -86,7 +88,10 @@ namespace GunAssembly {
         }
 
         public void ShellEject() {
-            GameObject shell = Instantiate(_casing, _shellSpawn.position, Quaternion.identity);
+            GameObject shell = _casePool.Dequeue();
+            shell.transform.position = _shellSpawn.position;
+            shell.SetActive(true);
+            
             Rigidbody rb = shell.GetComponent<Rigidbody>();
             rb.velocity = new Vector3(0, Random.Range(3f, 4f), Random.Range(0.5f, 1f));
             rb.angularVelocity = new Vector3(10, 10, 10);
@@ -94,7 +99,23 @@ namespace GunAssembly {
             foreach (var effect in _effects) {
                 effect.Play();
             }
+
+            StartCoroutine(DespawnCase(shell));
             //rb.AddForce(transform.right * 20f, ForceMode.Impulse);
+        }
+
+        private IEnumerator DespawnCase(GameObject shell) {
+            yield return new WaitForSeconds(0.5f);
+            shell.SetActive(false);
+            _casePool.Enqueue(shell);
+        }
+
+        private void PrepPool() {
+            for (int i = 0; i < _casePoolLength; i++) {
+                GameObject casing = Instantiate(_casing, Vector3.zero, Quaternion.identity);
+                _casePool.Enqueue(casing);
+                casing.SetActive(false);
+            }
         }
 
         private void AssignParent(PartAnimState node) {
@@ -119,8 +140,8 @@ namespace GunAssembly {
             outline.enabled = true;
         }
 
-        private bool AnimatorIsDone() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >=
-                        _animator.GetCurrentAnimatorStateInfo(0).length;
+        private bool AnimatorIsDone() =>
+            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f;
 
         private void OnPartSelect(GameObject obj) {
             if (!AnimatorIsDone() || obj.layer != LayerMask.NameToLayer("Weapon")) return;
@@ -135,8 +156,6 @@ namespace GunAssembly {
             PartAnimState state = FindNode(rootState, part.AnimName);
             
             if (state == null) return;
-            
-            Debug.Log(_assemblyState);
             
             if (_assemblyState == WeaponState.Disassemble && state.parent.active && !state.active) {
                 _animator.CrossFade(state.name, 0);
@@ -182,7 +201,6 @@ namespace GunAssembly {
 
         private void SwitchCam(PartAnimState state, WeaponState weaponState) {
             PartAnimState camState = FindParent(state, n => n.cam != null);
-            Debug.Log(camState.cam);
             _switchCam.RaiseEvent(camState.cam);
         }
 

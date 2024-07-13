@@ -33,7 +33,6 @@ namespace GunAssembly {
         private void SwitchCamera(ICinemachineCamera camera) {
             camera.Priority = 10;
             _activeCam = camera;
-            Debug.Log(cameras.Length);
 
             foreach (var c in cameras.Where(c => c != camera && c.Priority != 0)) {
                 c.Priority = 0;
