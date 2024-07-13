@@ -8756,6 +8756,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975765351}
   m_Mesh: {fileID: 3564730890263854019, guid: bb32a7e3c3c77a24fac5815e10cd7779, type: 3}
+--- !u!1 &982136246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1800667467052161655, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1458084723431154242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &982136250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982136246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fad8fd3a594b1389ae8796e30c93fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _caseSpawn: {fileID: 1663422371}
+  _casing: {fileID: 4941301908027531288, guid: 9630bb3a93c84b348a85e7b4eba37f09, type: 3}
+  _casePoolLength: 6
+  _effects:
+  - {fileID: 1552689906}
+  - {fileID: 1404654360}
 --- !u!1 &997728344
 GameObject:
   m_ObjectHideFlags: 0
@@ -23914,6 +23938,12 @@ PrefabInstance:
       propertyPath: _casePoolLength
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: OnWeaponStateChange
+      value: 
+      objectReference: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449,
+        type: 2}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
       propertyPath: _effects.Array.data[0]
@@ -41215,13 +41245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partClicked: {fileID: 0}
   _switchCam: {fileID: 0}
-  _onWeaponStateChange: {fileID: 0}
+  OnWeaponStateChange: {fileID: 0}
   rootState:
     rid: -2
-  _shellSpawn: {fileID: 0}
-  _casing: {fileID: 0}
-  _casePoolLength: 0
-  _effects: []
   references:
     version: 2
     RefIds:
