@@ -11,6 +11,7 @@ namespace GunAssembly {
 
         private void Awake() {
             _cam = Camera.main;
+            Application.targetFrameRate = 60;
         }
 
         private void OnEnable() {
@@ -24,7 +25,7 @@ namespace GunAssembly {
         }
 
         private void OnClick(InputAction.CallbackContext ctx) {
-            Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Ray ray = _cam.ScreenPointToRay(ctx.ReadValue<Vector2>());
             if (Physics.Raycast(ray, out RaycastHit hit, 100)) {
                 _objClicked?.RaiseEvent(hit.collider.gameObject);
             }
