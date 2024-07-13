@@ -55,9 +55,8 @@ namespace GunAssembly {
 
         private void Start() {
             Animator = GetComponent<Animator>();
-            Debug.Log(rootState);
-            rootState.active = true;
             _stateMap = new Dictionary<WeaponState, WeaponBaseState>() {
+                { WeaponState.None , new WeaponDefaultState(this)},
                 { WeaponState.Disassemble, new WeaponAssemblyState(this, false) },
                 { WeaponState.Assemble, new WeaponAssemblyState(this, true) },
                 { WeaponState.Fire, new WeaponFireSemiState(this) },
@@ -65,7 +64,7 @@ namespace GunAssembly {
             };
 
             AssignParent(rootState);
-            SwitchState(WeaponState.Disassemble);
+            SwitchState(WeaponState.None);
         }
 
         public void SwitchState(WeaponState newState) {

@@ -17,7 +17,6 @@ namespace GunAssembly {
         }
         
         
-        
         public void ShellEject() {
             GameObject shell = _casePool.Dequeue();
             shell.transform.position = _caseSpawn.position;
