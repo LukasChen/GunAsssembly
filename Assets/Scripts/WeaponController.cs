@@ -24,6 +24,7 @@ namespace GunAssembly {
         Disassemble,
         Assemble,
         Fire,
+        FireAuto, // Temp
         None
     }
     
@@ -47,6 +48,7 @@ namespace GunAssembly {
         private Animator _animator;
 
         private bool _hasFired;
+        private bool _isFiring;
 
         private void OnEnable() {
             _partClicked.OnEventRaised += OnPartSelect;
@@ -79,7 +81,7 @@ namespace GunAssembly {
             PartAnimState remainingPart = DFS(rootState, n => n.active == predicate && n.name != "Root");
             bool result = remainingPart == null;
 
-            return result || state == WeaponState.None;
+            return result || state == WeaponState.None || state == WeaponState.Fire || state == WeaponState.FireAuto;
         }
 
         public void AssignObj(WeaponPartAnim part) {
@@ -148,6 +150,19 @@ namespace GunAssembly {
 
             if (_assemblyState == WeaponState.Fire) {
                 FirePartSelect(obj);
+                return;
+            }
+
+
+            if (_assemblyState == WeaponState.FireAuto) {
+                if (!_isFiring) {
+                    _animator.CrossFade("FireSelect Auto", 0);
+                    _isFiring = true;
+                }
+                else {
+                    _animator.CrossFade("TriggerRelease", 0);
+                    _isFiring = false;
+                }
                 return;
             }
 
