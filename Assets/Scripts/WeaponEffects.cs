@@ -11,6 +11,8 @@ namespace GunAssembly {
         [SerializeField] private int _casePoolLength;
         [SerializeField] private VisualEffect[] _effects;
         private Queue<GameObject> _casePool = new Queue<GameObject>();
+        [SerializeField] private Vector2 randomYOffset;
+        [SerializeField] private Vector2 randomXOffset;
 
         private void Start() {
             PrepPool();
@@ -23,7 +25,7 @@ namespace GunAssembly {
             shell.SetActive(true);
             
             Rigidbody rb = shell.GetComponent<Rigidbody>();
-            rb.velocity = new Vector3(0, Random.Range(3f, 4f), Random.Range(0.5f, 1f));
+            rb.velocity = new Vector3(0, Random.Range(randomYOffset.x, randomYOffset.y), Random.Range(randomXOffset.x, randomXOffset.y));
             rb.angularVelocity = new Vector3(10, 10, 10);
 
             foreach (var effect in _effects) {

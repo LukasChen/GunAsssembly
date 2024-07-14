@@ -19,21 +19,27 @@ namespace GunAssembly {
         [NonSerialized] public PartAnimState parent;
     }
     
-
+    [Flags]
     public enum WeaponState {
-        Disassemble,
-        Assemble,
-        Fire,
-        FireAuto, // Temp
-        None
+        None = 0,
+        Disassemble = 1,
+        Assemble = 2,
+        Fire = 4,
+        FireAuto = 8,
     }
-    
-    // TODO: Turn in to state machine
+
+    [Serializable]
+    public struct WeaponStateTransitions {
+        public WeaponState name;
+        public WeaponState nextStates;
+    }
    
     public class WeaponController : MonoBehaviour {
         [SerializeField] private GameObjectDataEventChannelSO _partClicked;
         [SerializeField] private CameraDataEventChannelSO _switchCam;
         [SerializeField] public WeaponStateDataEventChannelSO OnWeaponStateChange;
+        [SerializeField] public WeaponStateDataEventChannelSO ActiveStateChannel;
+        public WeaponStateTransitions[] weaponStateTransitions;
         
 
         [SerializeReference] public PartAnimState rootState;
@@ -56,11 +62,11 @@ namespace GunAssembly {
         private void Start() {
             Animator = GetComponent<Animator>();
             _stateMap = new Dictionary<WeaponState, WeaponBaseState>() {
-                { WeaponState.None , new WeaponDefaultState(this)},
-                { WeaponState.Disassemble, new WeaponAssemblyState(this, false) },
-                { WeaponState.Assemble, new WeaponAssemblyState(this, true) },
-                { WeaponState.Fire, new WeaponFireSemiState(this) },
-                { WeaponState.FireAuto, new WeaponFireAutoState(this) }
+                { WeaponState.None, new WeaponDefaultState(this, weaponStateTransitions.Single(n => n.name == WeaponState.None).nextStates)},
+                { WeaponState.Disassemble, new WeaponAssemblyState(this, weaponStateTransitions.Single(n => n.name == WeaponState.Disassemble).nextStates, false) },
+                { WeaponState.Assemble, new WeaponAssemblyState(this, weaponStateTransitions.Single(n=> n.name == WeaponState.Assemble).nextStates, true) },
+                { WeaponState.Fire, new WeaponFireSemiState(this, weaponStateTransitions.Single(n => n.name == WeaponState.Fire).nextStates) },
+                { WeaponState.FireAuto, new WeaponFireAutoState(this, weaponStateTransitions.Single(n => n.name == WeaponState.FireAuto).nextStates) }
             };
 
             AssignParent(rootState);
@@ -69,6 +75,7 @@ namespace GunAssembly {
 
         public void SwitchState(WeaponState newState) {
             WeaponBaseState newStateClass = _stateMap[newState];
+            // ActiveStateChannel.RaiseEvent(newState);
             _currentState?.ExitState();
             _currentState = newStateClass;
             _currentState.EnterState();

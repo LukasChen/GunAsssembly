@@ -1993,6 +1993,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponState: 1
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
+  _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
+    type: 2}
 --- !u!114 &192187447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,6 +2750,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponState: 3
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
+  _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
+    type: 2}
 --- !u!114 &285713127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9459,6 +9463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponState: 0
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
+  _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
+    type: 2}
 --- !u!1 &1076896917
 GameObject:
   m_ObjectHideFlags: 0
@@ -9605,6 +9611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponState: 2
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
+  _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
+    type: 2}
 --- !u!114 &1081026655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23938,6 +23946,12 @@ PrefabInstance:
       propertyPath: _casePoolLength
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: ActiveStateChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
+        type: 2}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
       propertyPath: OnWeaponStateChange
@@ -41246,6 +41260,7 @@ MonoBehaviour:
   _partClicked: {fileID: 0}
   _switchCam: {fileID: 0}
   OnWeaponStateChange: {fileID: 0}
+  ActiveStateChannel: {fileID: 0}
   rootState:
     rid: -2
   references:

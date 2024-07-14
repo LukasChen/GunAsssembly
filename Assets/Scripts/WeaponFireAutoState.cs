@@ -4,7 +4,7 @@ namespace GunAssembly {
     public class WeaponFireAutoState : WeaponBaseState {
         private bool _isFiring;
         
-        public WeaponFireAutoState(WeaponController weapon) : base(weapon) {
+        public WeaponFireAutoState(WeaponController weapon, WeaponState transition) : base(weapon, transition) {
         }
 
         public override void OnPartSelected(GameObject obj) {
@@ -17,17 +17,18 @@ namespace GunAssembly {
                 _isFiring = true;
             }
             else {
-                weapon.Animator.CrossFade("TriggerRelease", 0);
-                _isFiring = false;
+                Release();
             }
         }
 
-        public override void EnterState() {
-            weapon.OnWeaponStateChange.OnEventRaised += weapon.SwitchState;
+        private void Release() {
+            weapon.Animator.CrossFade("TriggerRelease", 0);
+            _isFiring = false;
         }
 
         public override void ExitState() {
-            weapon.OnWeaponStateChange.OnEventRaised -= weapon.SwitchState;
+            base.ExitState();
+            Release();
         }
     }
 }

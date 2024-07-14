@@ -8,7 +8,7 @@ namespace GunAssembly {
 
         private bool _isAssembly = false;
 
-        public WeaponAssemblyState(WeaponController weapon, bool isAssembly) : base(weapon) {
+        public WeaponAssemblyState(WeaponController weapon, WeaponState transition, bool isAssembly) : base(weapon, transition) {
             _isAssembly = isAssembly;
         }
 
@@ -21,39 +21,53 @@ namespace GunAssembly {
             
             if (!_isAssembly && state.parent.active && !state.active) {
                 weapon.Animator.CrossFade(state.name, 0);
-                state.active = true;
-                weapon.SwitchCam(state);
-                state.obj.GetComponent<Outline>().enabled = false;
-                AssignHint();
                 if (state.subStates.Count == 0) weapon.StartCoroutine(SwitchToMainCam(state));
+                UpdatePart(state);
             }
 
             if (_isAssembly && state.active && (state.subStates == null || state.subStates.All(state => !state.active))) {
                 weapon.Animator.CrossFade(state.name + "Reverse", 0);
-                state.active = false;
-                weapon.SwitchCam(state);
-                state.obj.GetComponent<Outline>().enabled = false;
-                AssignHint();
                 weapon.StartCoroutine(SwitchToMainCam(state));
+                UpdatePart(state);
             }
+
+            ValidateAssembly();
+        }
+
+        private void UpdatePart(PartAnimState state) {
+            state.active = !_isAssembly;
+            weapon.SwitchCam(state);
+            AssignHint();
+            state.obj.GetComponent<Outline>().enabled = false;
         }
 
         public override void EnterState() {
-            weapon.OnWeaponStateChange.OnEventRaised += ValidateWeaponState;
+            weapon.OnWeaponStateChange.OnEventRaised += SwitchState;
             weapon.rootState.active = !_isAssembly;
             AssignHint();
+            ValidateAssembly();
         }
 
         public override void ExitState() {
-            weapon.OnWeaponStateChange.OnEventRaised -= ValidateWeaponState;
+            weapon.OnWeaponStateChange.OnEventRaised -= SwitchState;
         }
         
-        private void ValidateWeaponState(WeaponState newState) {
+        private bool ValidateAssembly() {
             PartAnimState remainingPart = weapon.DFS(weapon.rootState, n => n.active == _isAssembly && n.name != "Root");
-            if (remainingPart != null) return;
+            if (remainingPart != null) {
+                weapon.ActiveStateChannel.RaiseEvent(WeaponState.None);
+                return false;
+            }
+            weapon.ActiveStateChannel.RaiseEvent(transition);
 
+            return true;
+        }
+
+        private void SwitchState(WeaponState newState) {
+            if (!ValidateAssembly() && (transition & newState) == 0) {
+                return;
+            }
             weapon.SwitchState(newState);
-
         }
         
         private IEnumerator SwitchToMainCam(PartAnimState state) {
