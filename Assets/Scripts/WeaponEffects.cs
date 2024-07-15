@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.VFX;
 
-namespace GunAssembly {
+namespace GunAssembly.Weapon {
     public class WeaponEffects : MonoBehaviour {
         
         [SerializeField] private Transform _caseSpawn;

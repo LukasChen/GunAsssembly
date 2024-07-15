@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.Serialization;
-using UnityEngine.VFX;
-using Random = UnityEngine.Random;
 
-namespace GunAssembly {
+namespace GunAssembly.Weapon {
     [Serializable]
     public class PartAnimState {
         public string name;
@@ -62,11 +58,11 @@ namespace GunAssembly {
         private void Start() {
             Animator = GetComponent<Animator>();
             _stateMap = new Dictionary<WeaponState, WeaponBaseState>() {
-                { WeaponState.None, new WeaponDefaultState(this, weaponStateTransitions.Single(n => n.name == WeaponState.None).nextStates)},
-                { WeaponState.Disassemble, new WeaponAssemblyState(this, weaponStateTransitions.Single(n => n.name == WeaponState.Disassemble).nextStates, false) },
-                { WeaponState.Assemble, new WeaponAssemblyState(this, weaponStateTransitions.Single(n=> n.name == WeaponState.Assemble).nextStates, true) },
-                { WeaponState.Fire, new WeaponFireSemiState(this, weaponStateTransitions.Single(n => n.name == WeaponState.Fire).nextStates) },
-                { WeaponState.FireAuto, new WeaponFireAutoState(this, weaponStateTransitions.Single(n => n.name == WeaponState.FireAuto).nextStates) }
+                { WeaponState.None, new WeaponDefaultState(this, GetTransitionStates(WeaponState.None))},
+                { WeaponState.Disassemble, new WeaponAssemblyState(this, GetTransitionStates(WeaponState.Disassemble), false) },
+                { WeaponState.Assemble, new WeaponAssemblyState(this, GetTransitionStates(WeaponState.Assemble), true) },
+                { WeaponState.Fire, new WeaponFireSemiState(this, GetTransitionStates(WeaponState.Fire)) },
+                { WeaponState.FireAuto, new WeaponFireAutoState(this, GetTransitionStates(WeaponState.FireAuto)) }
             };
 
             AssignParent(rootState);
@@ -85,6 +81,11 @@ namespace GunAssembly {
             PartAnimState state = FindNode(rootState, part.AnimName);
             state.obj = part.gameObject;
         }
+
+        private WeaponState GetTransitionStates(WeaponState state) =>
+            weaponStateTransitions.Single(n => n.name == state).nextStates;
+            
+        
 
 
         private void AssignParent(PartAnimState node) {
@@ -107,7 +108,9 @@ namespace GunAssembly {
             PartAnimState camState = FindParent(state, n => n.cam != null);
             _switchCam.RaiseEvent(camState.cam);
         }
-
+        
+        
+        // TODO: Turn the next 4 functions into generic helpers
 
         public PartAnimState FindNode(PartAnimState rootNode, string searchString) {
             return DFS(rootNode, n => n.name == searchString);

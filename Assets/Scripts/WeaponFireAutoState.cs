@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GunAssembly {
+namespace GunAssembly.Weapon {
     public class WeaponFireAutoState : WeaponBaseState {
         private bool _isFiring;
         

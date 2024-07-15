@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using GunAssembly.Weapon;
 
 namespace GunAssembly.UI {
     public class SwitchWeaponStateBtn : MonoBehaviour {
@@ -23,11 +24,7 @@ namespace GunAssembly.UI {
         }
 
         private void CheckActive(WeaponState state) {
-            if ((_weaponState & state) == 0)
-                _btnBg.color = new Color(1, 1, 1, 0.3f);
-            else 
-                _btnBg.color = Color.white;
-
+            _btnBg.color = (_weaponState & state) == 0 ? new Color(1, 1, 1, 0.3f) : Color.white;
         }
 
         public void OnClick() {

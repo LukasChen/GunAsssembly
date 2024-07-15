@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 1
+  _weaponState: 2
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 3
+  _weaponState: 8
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -8784,6 +8784,8 @@ MonoBehaviour:
   _effects:
   - {fileID: 1552689906}
   - {fileID: 1404654360}
+  randomYOffset: {x: 3, y: 4}
+  randomXOffset: {x: 1, y: 2}
 --- !u!1 &997728344
 GameObject:
   m_ObjectHideFlags: 0
@@ -9461,7 +9463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 0
+  _weaponState: 1
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -9609,7 +9611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 2
+  _weaponState: 4
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -23948,10 +23950,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
+      propertyPath: test.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
       propertyPath: ActiveStateChannel
       value: 
       objectReference: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
         type: 2}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: test.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
       propertyPath: OnWeaponStateChange
@@ -23970,6 +23982,46 @@ PrefabInstance:
       objectReference: {fileID: 1404654360}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
+      propertyPath: stateTransitions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: stateTransitions.Array.data[0].name
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[0].name
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[1].name
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[2].name
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[3].name
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[4].name
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
       propertyPath: managedReferences[1122814939246100515].cam
       value: 
       objectReference: {fileID: 1474389814}
@@ -23983,6 +24035,31 @@ PrefabInstance:
       propertyPath: managedReferences[1122814939246100525].cam
       value: 
       objectReference: {fileID: 1216610933}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[0].nextStates
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[1].nextStates
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[2].nextStates
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[3].nextStates
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: weaponStateTransitions.Array.data[4].nextStates
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1800667467052161655, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
       propertyPath: m_Name
@@ -41261,6 +41338,7 @@ MonoBehaviour:
   _switchCam: {fileID: 0}
   OnWeaponStateChange: {fileID: 0}
   ActiveStateChannel: {fileID: 0}
+  weaponStateTransitions: []
   rootState:
     rid: -2
   references:

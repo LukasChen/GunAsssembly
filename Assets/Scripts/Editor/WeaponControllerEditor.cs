@@ -1,6 +1,7 @@
 ﻿using Cinemachine;
 using UnityEditor;
 using UnityEngine;
+using GunAssembly.Weapon;
 
 namespace GunAssembly{
     

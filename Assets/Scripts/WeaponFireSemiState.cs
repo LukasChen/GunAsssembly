@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-namespace GunAssembly {
+namespace GunAssembly.Weapon {
+    
     public class WeaponFireSemiState : WeaponBaseState {
         private bool _hasFired = false;
         public WeaponFireSemiState(WeaponController weapon, WeaponState transition) : base(weapon, transition) {
@@ -18,11 +19,6 @@ namespace GunAssembly {
                 weapon.Animator.Play("Fire", -1, 0f);
             }
             _hasFired = true;
-        }
-
-        public override void ExitState() {
-            base.ExitState();
-            weapon.Animator.StopPlayback();
         }
     }
 }

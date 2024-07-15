@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GunAssembly {
+namespace GunAssembly.Weapon {
     public abstract class WeaponBaseState {
         protected readonly WeaponController weapon;
         protected readonly WeaponState transition;

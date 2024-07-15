@@ -3,10 +3,10 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GunAssembly {
+namespace GunAssembly.Weapon {
     public class WeaponAssemblyState : WeaponBaseState {
 
-        private bool _isAssembly = false;
+        private readonly bool _isAssembly = false;
 
         public WeaponAssemblyState(WeaponController weapon, WeaponState transition, bool isAssembly) : base(weapon, transition) {
             _isAssembly = isAssembly;
@@ -54,19 +54,15 @@ namespace GunAssembly {
         
         private bool ValidateAssembly() {
             PartAnimState remainingPart = weapon.DFS(weapon.rootState, n => n.active == _isAssembly && n.name != "Root");
-            if (remainingPart != null) {
-                weapon.ActiveStateChannel.RaiseEvent(WeaponState.None);
-                return false;
-            }
-            weapon.ActiveStateChannel.RaiseEvent(transition);
-
-            return true;
+            return remainingPart != null;
         }
 
         private void SwitchState(WeaponState newState) {
             if (!ValidateAssembly() && (transition & newState) == 0) {
+                weapon.ActiveStateChannel.RaiseEvent(WeaponState.None);
                 return;
             }
+            weapon.ActiveStateChannel.RaiseEvent(transition);
             weapon.SwitchState(newState);
         }
         
