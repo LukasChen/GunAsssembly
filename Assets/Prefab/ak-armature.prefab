@@ -182,7 +182,90 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 12b0cfb40bd0617438e3fff68d7eac87, type: 2}
-  - {fileID: 2100000, guid: dc9b1fbd9ec0edf4db5dd7b84402d782, type: 2}
+  - {fileID: 2100000, guid: 12b0cfb40bd0617438e3fff68d7eac87, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &220249712989244856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6053179126819969017}
+  - component: {fileID: 5749102336351324305}
+  - component: {fileID: 4249288969312788340}
+  m_Layer: 0
+  m_Name: gas_piston
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6053179126819969017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220249712989244856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.001587, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4071319385345896399}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5749102336351324305
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220249712989244856}
+  m_Mesh: {fileID: -2068048302188711692, guid: bef698da592ca6a439298582d890cc48, type: 3}
+--- !u!23 &4249288969312788340
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220249712989244856}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 340d1caeade30bb40b790da75c4b91a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2661,6 +2744,7 @@ GameObject:
   - component: {fileID: 1420482341092933837}
   - component: {fileID: 1458084724524152480}
   - component: {fileID: 1458084724524152481}
+  - component: {fileID: 6911536847215202097}
   m_Layer: 6
   m_Name: ak-armature
   m_TagString: Untagged
@@ -2675,7 +2759,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800667467052161655}
-  m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0.33, y: 0.483, z: 1.831}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
@@ -2683,7 +2767,7 @@ Transform:
   - {fileID: 8450954326098817527}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!95 &1458084724524152480
 Animator:
   serializedVersion: 4
@@ -2718,16 +2802,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partClicked: {fileID: 11400000, guid: 60fa57af08a5a944ba49f2836aac4235, type: 2}
   _switchCam: {fileID: 11400000, guid: 580a808bb9ce2154e92dfc96bc0e171b, type: 2}
-  _onWeaponStateChange: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449,
+  OnWeaponStateChange: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449,
     type: 2}
+  ActiveStateChannel: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05, type: 2}
+  weaponStateTransitions:
+  - name: 0
+    nextStates: -1
+  - name: 1
+    nextStates: 2
+  - name: 2
+    nextStates: 13
+  - name: 4
+    nextStates: 9
+  - name: 8
+    nextStates: 5
   rootState:
     rid: 1122814939246100515
-  _shellSpawn: {fileID: 0}
-  _casing: {fileID: 4941301908027531288, guid: 9630bb3a93c84b348a85e7b4eba37f09, type: 3}
-  _casePoolLength: 3
-  _effects:
-  - {fileID: 0}
-  - {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -2793,6 +2883,26 @@ MonoBehaviour:
         obj: {fileID: 4191142172578965942}
         cam: {fileID: 0}
         subStates: []
+--- !u!114 &6911536847215202097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800667467052161655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0fad8fd3a594b1389ae8796e30c93fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _caseSpawn: {fileID: 0}
+  _casing: {fileID: 4941301908027531288, guid: 9630bb3a93c84b348a85e7b4eba37f09, type: 3}
+  _casePoolLength: 6
+  _effects:
+  - {fileID: 0}
+  - {fileID: 0}
+  randomYOffset: {x: 0, y: 0}
+  randomXOffset: {x: 0, y: 0}
 --- !u!1 &1883933120161001878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,7 +5007,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3253007322540118546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -23936,6 +24046,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5587447310866131493}
+  - {fileID: 6053179126819969017}
   m_Father: {fileID: 4584840449386791926}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

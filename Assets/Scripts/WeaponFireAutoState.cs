@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GunAssembly.Weapon {
+namespace GunAssembly{
     public class WeaponFireAutoState : WeaponBaseState {
         private bool _isFiring;
         
@@ -9,6 +9,10 @@ namespace GunAssembly.Weapon {
 
         public override void OnPartSelected(GameObject obj) {
             Fire();
+        }
+
+        public override void PlaySFX() {
+            AudioSource.PlayClipAtPoint(weapon.fireSFX, weapon.transform.position);
         }
 
         private void Fire() {
@@ -20,7 +24,7 @@ namespace GunAssembly.Weapon {
                 Release();
             }
         }
-
+        
         private void Release() {
             weapon.Animator.CrossFade("TriggerRelease", 0);
             _isFiring = false;

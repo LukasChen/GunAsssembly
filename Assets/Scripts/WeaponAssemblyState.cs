@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace GunAssembly.Weapon {
+namespace GunAssembly {
     public class WeaponAssemblyState : WeaponBaseState {
 
-        private readonly bool _isAssembly = false;
+        private bool _isAssembly = false;
+        private PartAnimState _currentState;
 
         public WeaponAssemblyState(WeaponController weapon, WeaponState transition, bool isAssembly) : base(weapon, transition) {
             _isAssembly = isAssembly;
@@ -33,12 +33,15 @@ namespace GunAssembly.Weapon {
 
             ValidateAssembly();
         }
+        
 
         private void UpdatePart(PartAnimState state) {
             state.active = !_isAssembly;
             weapon.SwitchCam(state);
             AssignHint();
             state.obj.GetComponent<Outline>().enabled = false;
+            if(state.sfx != null) AudioSource.PlayClipAtPoint(state.sfx, weapon.transform.position);
+            _currentState = state;
         }
 
         public override void EnterState() {
@@ -48,21 +51,29 @@ namespace GunAssembly.Weapon {
             ValidateAssembly();
         }
 
+        public override void PlaySFX() {
+            // if(_currentState.sfx != null) AudioSource.PlayClipAtPoint(_currentState.sfx, weapon.transform.position);
+        }
+
         public override void ExitState() {
             weapon.OnWeaponStateChange.OnEventRaised -= SwitchState;
         }
         
         private bool ValidateAssembly() {
             PartAnimState remainingPart = weapon.DFS(weapon.rootState, n => n.active == _isAssembly && n.name != "Root");
-            return remainingPart != null;
+            if (remainingPart != null) {
+                weapon.ActiveStateChannel.RaiseEvent(WeaponState.None);
+                return false;
+            }
+            weapon.ActiveStateChannel.RaiseEvent(transition);
+
+            return true;
         }
 
         private void SwitchState(WeaponState newState) {
             if (!ValidateAssembly() && (transition & newState) == 0) {
-                weapon.ActiveStateChannel.RaiseEvent(WeaponState.None);
                 return;
             }
-            weapon.ActiveStateChannel.RaiseEvent(transition);
             weapon.SwitchState(newState);
         }
         

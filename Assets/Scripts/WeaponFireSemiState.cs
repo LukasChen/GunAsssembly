@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GunAssembly.Weapon {
+namespace GunAssembly{
     
     public class WeaponFireSemiState : WeaponBaseState {
         private bool _hasFired = false;
@@ -9,6 +9,10 @@ namespace GunAssembly.Weapon {
 
         public override void OnPartSelected(GameObject obj) {
             Fire();
+        }
+
+        public override void PlaySFX() {
+            AudioSource.PlayClipAtPoint(weapon.fireSFX, weapon.transform.position);
         }
 
         private void Fire() {

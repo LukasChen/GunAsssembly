@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GunAssembly.Weapon {
+namespace GunAssembly{
     public abstract class WeaponBaseState {
         protected readonly WeaponController weapon;
         protected readonly WeaponState transition;
@@ -11,6 +11,8 @@ namespace GunAssembly.Weapon {
         }
 
         public abstract void OnPartSelected(GameObject obj);
+
+        public abstract void PlaySFX();
 
         public virtual void EnterState() {
             weapon.OnWeaponStateChange.OnEventRaised += SwitchState;
