@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GunAssembly {
     public class WeaponAssemblyState : WeaponBaseState {
 
         private bool _isAssembly = false;
+        private PartAnimState _currentState;
 
         public WeaponAssemblyState(WeaponController weapon, WeaponState transition, bool isAssembly) : base(weapon, transition) {
             _isAssembly = isAssembly;
@@ -33,12 +33,15 @@ namespace GunAssembly {
 
             ValidateAssembly();
         }
+        
 
         private void UpdatePart(PartAnimState state) {
             state.active = !_isAssembly;
             weapon.SwitchCam(state);
             AssignHint();
             state.obj.GetComponent<Outline>().enabled = false;
+            if(state.sfx != null) AudioSource.PlayClipAtPoint(state.sfx, weapon.transform.position);
+            _currentState = state;
         }
 
         public override void EnterState() {
@@ -46,6 +49,10 @@ namespace GunAssembly {
             weapon.rootState.active = !_isAssembly;
             AssignHint();
             ValidateAssembly();
+        }
+
+        public override void PlaySFX() {
+            // if(_currentState.sfx != null) AudioSource.PlayClipAtPoint(_currentState.sfx, weapon.transform.position);
         }
 
         public override void ExitState() {

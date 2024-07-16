@@ -6,5 +6,6 @@ namespace GunAssembly {
         }
 
         public override void OnPartSelected(GameObject obj) { }
+        public override void PlaySFX() { }
     }
 }

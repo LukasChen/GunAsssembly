@@ -11,6 +11,10 @@ namespace GunAssembly {
             Fire();
         }
 
+        public override void PlaySFX() {
+            AudioSource.PlayClipAtPoint(weapon.fireSFX, weapon.transform.position);
+        }
+
         private void Fire() {
             if (!_isFiring) {
                 weapon.Animator.CrossFade("FireSelect Auto", 0);
@@ -20,7 +24,7 @@ namespace GunAssembly {
                 Release();
             }
         }
-
+        
         private void Release() {
             weapon.Animator.CrossFade("TriggerRelease", 0);
             _isFiring = false;

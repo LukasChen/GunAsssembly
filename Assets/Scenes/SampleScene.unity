@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 1
+  _weaponState: 2
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 3
+  _weaponState: 8
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -3235,7 +3235,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3309352, y: 1}
+    m_SensorSize: {x: 2.3326886, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3702,7 +3702,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 711ae9e4086cbee4f9f8dd4fc732535e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.925
+      value: -1.008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 711ae9e4086cbee4f9f8dd4fc732535e,
         type: 3}
@@ -4939,7 +4939,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3309352, y: 1}
+    m_SensorSize: {x: 2.3326886, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8760,30 +8760,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975765351}
   m_Mesh: {fileID: 3564730890263854019, guid: bb32a7e3c3c77a24fac5815e10cd7779, type: 3}
---- !u!1 &982136246 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1800667467052161655, guid: b753ca33182a69d40b8bddb2d9e9af2c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1458084723431154242}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &982136250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 982136246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0fad8fd3a594b1389ae8796e30c93fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _caseSpawn: {fileID: 1663422371}
-  _casing: {fileID: 4941301908027531288, guid: 9630bb3a93c84b348a85e7b4eba37f09, type: 3}
-  _casePoolLength: 6
-  _effects:
-  - {fileID: 1552689906}
-  - {fileID: 1404654360}
 --- !u!1 &997728344
 GameObject:
   m_ObjectHideFlags: 0
@@ -9461,7 +9437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 0
+  _weaponState: 1
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -9609,7 +9585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66ec8afb19e4648afb19cd319dd2f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponState: 2
+  _weaponState: 4
   _changeState: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449, type: 2}
   _currentActiveState: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
     type: 2}
@@ -10764,7 +10740,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3309352, y: 1}
+    m_SensorSize: {x: 2.3326886, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13412,7 +13388,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3309352, y: 1}
+    m_SensorSize: {x: 2.3326886, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -23938,36 +23914,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
-      propertyPath: _shellSpawn
+      propertyPath: fireSFX
       value: 
-      objectReference: {fileID: 1663422371}
+      objectReference: {fileID: 8300000, guid: cca9dc90a14ca3247bab69dc79acb5d0, type: 3}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
-      propertyPath: _casePoolLength
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
-        type: 3}
-      propertyPath: ActiveStateChannel
+      propertyPath: fireAutoSFX
       value: 
-      objectReference: {fileID: 11400000, guid: a6f4d5d5d55c39b4ab2800650ee71d05,
-        type: 2}
-    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
-        type: 3}
-      propertyPath: OnWeaponStateChange
-      value: 
-      objectReference: {fileID: 11400000, guid: aa3a615b4386aa84c8c88f7305700449,
-        type: 2}
-    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
-        type: 3}
-      propertyPath: _effects.Array.data[0]
-      value: 
-      objectReference: {fileID: 1552689906}
-    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
-        type: 3}
-      propertyPath: _effects.Array.data[1]
-      value: 
-      objectReference: {fileID: 1404654360}
+      objectReference: {fileID: 8300000, guid: cca9dc90a14ca3247bab69dc79acb5d0, type: 3}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
       propertyPath: managedReferences[1122814939246100515].cam
@@ -23975,29 +23929,109 @@ PrefabInstance:
       objectReference: {fileID: 1474389814}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
+      propertyPath: managedReferences[1122814939246100515].sfx
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: managedReferences[1122814939246100518].sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 479c35e90dbfff74d8bfb4d5c081f8b7, type: 3}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
       propertyPath: managedReferences[1122814939246100520].cam
       value: 
       objectReference: {fileID: 505589740}
     - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
+      propertyPath: managedReferences[1122814939246100520].sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 7740a4e3ef0e821448480f619a30d2f2, type: 3}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: managedReferences[1122814939246100521].sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: e321bf38585175b40a0612646978d27e, type: 3}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: managedReferences[1122814939246100522].sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: b952f25dcf2a3264e869b92fbce91b2f, type: 3}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: managedReferences[1122814939246100524].sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: e9aae78a6f12c2e489dd5f6bc8fe756e, type: 3}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
       propertyPath: managedReferences[1122814939246100525].cam
       value: 
       objectReference: {fileID: 1216610933}
+    - target: {fileID: 1458084724524152481, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: managedReferences[1122814939246100525].sfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 13e6263bd48d6e14fb54537f0641abd1, type: 3}
     - target: {fileID: 1800667467052161655, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
       propertyPath: m_Name
       value: ak-armature
       objectReference: {fileID: 0}
-    - target: {fileID: 2841680627966076424, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+    - target: {fileID: 4071319385345896399, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_LocalPosition.x
+      value: 0.000091869035
       objectReference: {fileID: 0}
-    - target: {fileID: 8549169207217993994, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+    - target: {fileID: 4071319385345896399, guid: b753ca33182a69d40b8bddb2d9e9af2c,
         type: 3}
-      propertyPath: m_Materials.Array.data[1]
+      propertyPath: m_LocalPosition.y
+      value: 0.0008352602
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071319385345896399, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000009651551
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053179126819969017, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.001611
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: _caseSpawn
       value: 
-      objectReference: {fileID: 2100000, guid: 12b0cfb40bd0617438e3fff68d7eac87, type: 2}
+      objectReference: {fileID: 1663422371}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: randomXOffset.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: randomXOffset.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: randomYOffset.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: randomYOffset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: _effects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1552689906}
+    - target: {fileID: 6911536847215202097, guid: b753ca33182a69d40b8bddb2d9e9af2c,
+        type: 3}
+      propertyPath: _effects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1404654360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b753ca33182a69d40b8bddb2d9e9af2c, type: 3}
 --- !u!23 &1459736965567314917
@@ -41261,6 +41295,8 @@ MonoBehaviour:
   _switchCam: {fileID: 0}
   OnWeaponStateChange: {fileID: 0}
   ActiveStateChannel: {fileID: 0}
+  weaponStateTransitions: []
+  fireSFX: {fileID: 0}
   rootState:
     rid: -2
   references:

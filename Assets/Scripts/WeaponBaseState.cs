@@ -12,6 +12,8 @@ namespace GunAssembly {
 
         public abstract void OnPartSelected(GameObject obj);
 
+        public abstract void PlaySFX();
+
         public virtual void EnterState() {
             weapon.OnWeaponStateChange.OnEventRaised += SwitchState;
             weapon.ActiveStateChannel.RaiseEvent(transition);

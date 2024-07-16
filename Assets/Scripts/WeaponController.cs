@@ -15,6 +15,7 @@ namespace GunAssembly {
         public bool active;
         [SerializeReference] public GameObject obj;
         [SerializeReference] public CinemachineVirtualCamera cam;
+        [SerializeReference] public AudioClip sfx;
         [SerializeReference] public List<PartAnimState> subStates = new List<PartAnimState>();
         [NonSerialized] public PartAnimState parent;
     }
@@ -40,6 +41,7 @@ namespace GunAssembly {
         [SerializeField] public WeaponStateDataEventChannelSO OnWeaponStateChange;
         [SerializeField] public WeaponStateDataEventChannelSO ActiveStateChannel;
         public WeaponStateTransitions[] weaponStateTransitions;
+        [SerializeField] public AudioClip fireSFX;
         
 
         [SerializeReference] public PartAnimState rootState;
@@ -84,6 +86,10 @@ namespace GunAssembly {
         public void AssignObj(WeaponPartAnim part) {
             PartAnimState state = FindNode(rootState, part.AnimName);
             state.obj = part.gameObject;
+        }
+
+        public void PlaySFX() {
+            _currentState.PlaySFX();
         }
 
 

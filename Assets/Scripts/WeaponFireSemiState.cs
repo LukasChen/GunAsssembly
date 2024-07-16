@@ -10,6 +10,10 @@ namespace GunAssembly {
             Fire();
         }
 
+        public override void PlaySFX() {
+            AudioSource.PlayClipAtPoint(weapon.fireSFX, weapon.transform.position);
+        }
+
         private void Fire() {
             if (!_hasFired) {
                  weapon.Animator.CrossFade("FireSelect", 0);

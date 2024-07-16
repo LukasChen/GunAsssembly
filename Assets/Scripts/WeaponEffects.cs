@@ -10,9 +10,10 @@ namespace GunAssembly {
         [SerializeField] private GameObject _casing;
         [SerializeField] private int _casePoolLength;
         [SerializeField] private VisualEffect[] _effects;
-        private Queue<GameObject> _casePool = new Queue<GameObject>();
         [SerializeField] private Vector2 randomYOffset;
         [SerializeField] private Vector2 randomXOffset;
+        [SerializeField] private float _despawnDelay = 0.5f;
+        private Queue<GameObject> _casePool = new Queue<GameObject>();
 
         private void Start() {
             PrepPool();
@@ -36,7 +37,7 @@ namespace GunAssembly {
         }
 
         private IEnumerator DespawnCase(GameObject shell) {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(_despawnDelay);
             shell.SetActive(false);
             _casePool.Enqueue(shell);
         }
